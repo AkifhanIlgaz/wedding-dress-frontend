@@ -1,7 +1,5 @@
 "use client";
 
-import { ImageCarousel } from "@/src/shared/components/ImageCarousel";
-
 export default function NotAuthenticatedLayout({
   children,
 }: Readonly<{

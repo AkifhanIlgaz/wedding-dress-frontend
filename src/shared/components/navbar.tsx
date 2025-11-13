@@ -15,7 +15,6 @@ import { button, link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 
-import { siteConfig } from "@/src/shared/config/site";
 import { ThemeSwitch } from "@/src/shared/components/theme-switch";
 import {
   TwitterIcon,
@@ -25,7 +24,8 @@ import {
   SearchIcon,
   Logo,
 } from "@/src/shared/components/icons";
-import { authRoutes } from "@/src/auth/auth.routes";
+import { siteConfig } from "@/src/config/site";
+import { authRoutes } from "@/src/features/auth/auth.routes";
 
 export const Navbar = () => {
   // TODO: Authenticated olma durumuna gore navbar linklerini degistir

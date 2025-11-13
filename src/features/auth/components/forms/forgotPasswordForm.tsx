@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, Check, Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@heroui/button";
-
+import { isAuthApiError } from "@supabase/supabase-js";
 import { Input } from "@heroui/input";
 import { Checkbox } from "@heroui/checkbox";
 
@@ -21,51 +21,67 @@ import {
 } from "../../schemas";
 import { Link } from "@heroui/link";
 import AuthHeader from "../shared/header";
+import { createClient } from "@/src/lib/supabase/client";
+import { AuthMessage } from "../shared/authMessage";
 
 export default function ForgotPasswordForm() {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
 
   const form = useForm<ForgotPasswordRequest>({
     resolver: zodResolver(forgotPasswordSchema),
   });
 
   const onSubmit = async (req: ForgotPasswordRequest) => {
+    const supabase = createClient();
     setIsLoading(true);
+    setError(null);
 
-    new Promise((resolve) => setTimeout(resolve, 2000));
-
-    setIsLoading(false);
-    setIsSubmitted(true);
-    // try {
-    //   setIsLoading(true);
-    //   const { error } = await createClient().auth.signInWithPassword(req);
-    //   if (error) {
-    //     form.setError("email", {
-    //       type: "manual",
-    //       message: "Giriş başarısız: " + error.message,
-    //     });
-    //     return;
-    //   }
-    //   router.push(routes.dashboard.home);
-    // } catch (err) {
-    //   form.setError("email", {
-    //     type: "manual",
-    //     message: "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
-    //   });
-    //   console.error(err);
-    // } finally {
-    //   setIsLoading(false);
-    // }
+    try {
+      // The url which will be included in the email. This URL needs to be configured in your redirect URLs in the Supabase dashboard at https://supabase.com/dashboard/project/_/auth/url-configuration
+      const { error } = await supabase.auth.resetPasswordForEmail(req.email, {
+        redirectTo: `${window.location.origin}/auth/reset-password`,
+      });
+      if (error) throw error;
+      setSuccess(true);
+    } catch (error: unknown) {
+      if (isAuthApiError(error)) {
+        switch (error.code) {
+          case "invalid_credentials":
+            setError("E-posta veya şifre hatalı. Lütfen tekrar deneyiniz.");
+            break;
+          default:
+            setError("Bir hata meydana geldi. Lütfen tekrar deneyiniz.");
+            break;
+        }
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  if (isSubmitted) {
+
+
+  if (success) {
     return <Submitted email={form.getValues().email} />;
   }
 
+  if (error) {
+    return (
+      <AuthMessage
+        variant="error"
+        title="Bir şeyler ters gitti"
+        message={error}
+        setError={setError}
+        backHref={authRoutes.login}
+        backText="Giriş Sayfasına Dön"
+      />
+    );
+  }
   return (
-    <>
+    <div className="space-y-8">
       <AuthHeader
         title={authText.forgotPassword}
         subtitle={authText.enterEmail}
@@ -104,7 +120,7 @@ export default function ForgotPasswordForm() {
           </Button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
@@ -114,7 +130,7 @@ interface SubmittedProps {
 
 function Submitted({ email }: SubmittedProps) {
   return (
-    <>
+    <div className="space-y-4">
       <div className="text-center space-y-4">
         <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
           <Check className="w-8 h-8 text-primary" />
@@ -147,6 +163,6 @@ function Submitted({ email }: SubmittedProps) {
           {authText.buttons.returnLogin}
         </Button>
       </div>
-    </>
+    </div>
   );
 }

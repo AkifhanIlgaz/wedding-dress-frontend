@@ -5,8 +5,8 @@ import clsx from "clsx";
 
 import { Providers } from "./providers";
 
-import { siteConfig } from "@/src/shared/config/site";
-import { fontOutfit, fontSans } from "@/src/shared/config/fonts";
+import { siteConfig } from "@/src/config/site";
+import { fontOutfit } from "@/src/config/fonts";
 import { Navbar } from "@/src/shared/components/navbar";
 import Footer from "@/src/shared/components/footer";
 

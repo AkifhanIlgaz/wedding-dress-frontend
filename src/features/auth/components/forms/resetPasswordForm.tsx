@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, Check, Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { isAuthApiError } from "@supabase/supabase-js";
 import { Button } from "@heroui/button";
 
 import { Input } from "@heroui/input";
@@ -23,50 +23,79 @@ import {
 } from "../../schemas";
 import { Link } from "@heroui/link";
 import AuthHeader from "../shared/header";
+import { createClient } from "@/src/lib/supabase/client";
+import { AuthMessage } from "../shared/authMessage";
 
 export default function ResetPasswordForm() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const errorCode = searchParams.get("error_code");
 
   const form = useForm<ResetPasswordRequest>({
     resolver: zodResolver(resetPasswordSchema),
   });
 
   const onSubmit = async (req: ResetPasswordRequest) => {
+    const supabase = createClient();
     setIsLoading(true);
+    setError(null);
 
-    new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // The url which will be included in the email. This URL needs to be configured in your redirect URLs in the Supabase dashboard at https://supabase.com/dashboard/project/_/auth/url-configuration
+      const { error } = await supabase.auth.updateUser({
+        password: req.password,
+      });
+      if (error) throw error;
 
-    setIsLoading(false);
-    setIsSubmitted(true);
-    // try {
-    //   setIsLoading(true);
-    //   const { error } = await createClient().auth.signInWithPassword(req);
-    //   if (error) {
-    //     form.setError("email", {
-    //       type: "manual",
-    //       message: "Giriş başarısız: " + error.message,
-    //     });
-    //     return;
-    //   }
-    //   router.push(routes.dashboard.home);
-    // } catch (err) {
-    //   form.setError("email", {
-    //     type: "manual",
-    //     message: "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
-    //   });
-    //   console.error(err);
-    // } finally {
-    //   setIsLoading(false);
-    // }
+      router.push("/protected");
+    } catch (error: unknown) {
+      if (isAuthApiError(error)) {
+        switch (error.code) {
+          case "same_password":
+            setError("Yeni şifreniz eski şifreniz ile aynı olamaz.");
+            break;
+          default:
+            setError("Bir hata meydana geldi. Lütfen tekrar deneyiniz.");
+            break;
+        }
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  if (isSubmitted) return <Submitted />;
+  if (errorCode == "otp_expired") {
+    return (
+      <AuthMessage
+        variant="error"
+        title="Bağlantı geçersiz."
+        message={"Bu bağlantı geçersiz veya süresi dolmuş."}
+        extraNote="Lütfen yeni bir şifre sıfırlama bağlantısı alın."
+        setError={setError}
+        backHref={authRoutes.login}
+        backText="Giriş Sayfasına Dön"
+      />
+    );
+  }
 
+  if (error) {
+    return (
+      <AuthMessage
+        variant="error"
+        title="Bir şeyler ters gitti"
+        message={error}
+        setError={setError}
+        backHref={authRoutes.login}
+        backText="Giriş Sayfasına Dön"
+      />
+    );
+  }
   return (
-    <>
+    <div className="space-y-8">
       <AuthHeader
         title={authText.createNewPassword}
         subtitle={authText.createNewPasswordSubtitle}
@@ -141,34 +170,6 @@ export default function ResetPasswordForm() {
           </Button>
         </div>
       </form>
-    </>
-  );
-}
-
-function Submitted() {
-  return (
-    <>
-      <div className="text-center space-y-4">
-        <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-          <Check className="w-8 h-8 text-primary" />
-        </div>
-        <div>
-          <h1 className="text-2xl font-semibold text-foreground mb-2">
-            {authText.passwordUpdated}
-          </h1>
-          <p className="text-default-500">{authText.passwordUpdatedSubtitle}</p>
-        </div>
-      </div>
-
-      <Button
-        as={Link}
-        variant="ghost"
-        startContent={<ArrowLeft className="w-4 h-4 mr-2" />}
-        className="w-full"
-        href={authRoutes.login}
-      >
-        {authText.buttons.returnLogin}
-      </Button>
-    </>
+    </div>
   );
 }
