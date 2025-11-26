@@ -1,11 +1,3 @@
-import { Link } from "@heroui/link";
-import { Snippet } from "@heroui/snippet";
-import { Code } from "@heroui/code";
-import { button as buttonStyles } from "@heroui/theme";
-
-import { siteConfig } from "@/src/shared/config/site";
-import { title, subtitle } from "@/src/shared/components/primitives";
-import { GithubIcon } from "@/src/shared/components/icons";
 import { Button } from "@heroui/button";
 import { CheckCircle } from "lucide-react";
 
