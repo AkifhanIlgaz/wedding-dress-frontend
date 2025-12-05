@@ -13,18 +13,15 @@ export default function Footer() {
               <Logo />
               <span className="font-bold text-lg">ACME</span>
             </div>
-            <p className="text-sm opacity-80">Kendi gelinliğini tasarla</p>
+            <p className="text-sm opacity-80">Design your own wedding dress</p>
           </div>
 
-          <FooterSection
-            title="Hızlı Bağlantılar"
-            links={siteConfig.navItems}
-          />
+          <FooterSection title="Quick Links" links={siteConfig.navItems} />
 
           {/*<FooterSection title="Yasal" links={siteConfig.legalDocuments} />*/}
 
           <div>
-            <h4 className="font-bold mb-4">Bize Ulaşın</h4>
+            <h4 className="font-bold mb-4">Contact Us</h4>
             <ul className="space-y-2 text-sm opacity-80">
               <li>
                 <Link
@@ -71,11 +68,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold mb-4">Bülten</h4>
+            <h4 className="font-bold mb-4">Newsletter</h4>
             <p className="text-sm opacity-80 mb-3">
-              Haber ve güncellemeler için abone olun
+              Subscribe for the latest news and updates.
             </p>
-            <Input type="email" placeholder="E-posta adresiniz" />
+            <Input type="email" placeholder="Your email address" />
           </div>
         </div>
 
@@ -83,7 +80,7 @@ export default function Footer() {
           <span className="text-default-600">
             © 2025 <span className="text-primary">Bridal AI</span>{" "}
           </span>
-          <span className="text-default-600">Tüm hakları saklıdır</span>
+          <span className="text-default-600">All rights reserved.</span>
         </div>
       </div>
     </footer>

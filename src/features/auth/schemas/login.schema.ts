@@ -3,7 +3,7 @@ import { passwordSchema } from "./password.schema";
 
 export const loginSchema = z
   .object({
-    email: z.email("Lütfen geçerli bir e-posta giriniz.").max(255),
+    email: z.email("Please enter a valid email address.").max(255),
     password: passwordSchema,
   })
   .strict();

@@ -1,34 +1,26 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ArrowLeft, Check } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter, useSearchParams } from "next/navigation";
-import { ArrowLeft, Check, Eye, EyeOff, Lock, Mail } from "lucide-react";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@heroui/button";
-import { isAuthApiError } from "@supabase/supabase-js";
 import { Input } from "@heroui/input";
-import { Checkbox } from "@heroui/checkbox";
+import { isAuthApiError } from "@supabase/supabase-js";
 
+import { createClient } from "@/src/lib/supabase/client";
+import { Link } from "@heroui/link";
 import { authRoutes } from "../../auth.routes";
 import { authText } from "../../auth.text";
-import {
-  ForgotPasswordRequest,
-  forgotPasswordSchema,
-  LoginRequest,
-  loginSchema,
-} from "../../schemas";
-import { Link } from "@heroui/link";
-import AuthHeader from "../shared/header";
-import { createClient } from "@/src/lib/supabase/client";
+import { ForgotPasswordRequest, forgotPasswordSchema } from "../../schemas";
 import { AuthMessage } from "../shared/authMessage";
+import AuthHeader from "../shared/header";
 
 export default function ForgotPasswordForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
 
   const form = useForm<ForgotPasswordRequest>({
     resolver: zodResolver(forgotPasswordSchema),
@@ -50,10 +42,10 @@ export default function ForgotPasswordForm() {
       if (isAuthApiError(error)) {
         switch (error.code) {
           case "invalid_credentials":
-            setError("E-posta veya şifre hatalı. Lütfen tekrar deneyiniz.");
+            setError("Incorrect email or password. Please try again.");
             break;
           default:
-            setError("Bir hata meydana geldi. Lütfen tekrar deneyiniz.");
+            setError("Something went wrong. Please try again.");
             break;
         }
       }
@@ -61,8 +53,6 @@ export default function ForgotPasswordForm() {
       setIsLoading(false);
     }
   };
-
-
 
   if (success) {
     return <Submitted email={form.getValues().email} />;
@@ -72,11 +62,11 @@ export default function ForgotPasswordForm() {
     return (
       <AuthMessage
         variant="error"
-        title="Bir şeyler ters gitti"
+        title="Something went wrong"
         message={error}
         setError={setError}
         backHref={authRoutes.login}
-        backText="Giriş Sayfasına Dön"
+        backText="Back to login"
       />
     );
   }
@@ -140,9 +130,8 @@ function Submitted({ email }: SubmittedProps) {
             {authText.checkEmail}
           </h1>
           <p className="text-default-500">
-            Şifre sıfırlama bağlantısını{" "}
-            <span className="font-medium text-foreground">{email}</span>{" "}
-            adresine gönderdik.
+            We sent the reset link to{" "}
+            <span className="font-medium text-foreground">{email}</span>.
           </p>
         </div>
       </div>

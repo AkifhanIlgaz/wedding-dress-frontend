@@ -1,34 +1,30 @@
+import { Button } from "@heroui/button";
+import { Link } from "@heroui/link";
 import {
   Navbar as HeroUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
   NavbarBrand,
+  NavbarContent,
   NavbarItem,
+  NavbarMenu,
   NavbarMenuItem,
+  NavbarMenuToggle,
 } from "@heroui/navbar";
-import { Button } from "@heroui/button";
-import { Kbd } from "@heroui/kbd";
-import { Link } from "@heroui/link";
-import { Input } from "@heroui/input";
 import { button, link as linkStyles } from "@heroui/theme";
-import NextLink from "next/link";
 import clsx from "clsx";
+import NextLink from "next/link";
 
-import { ThemeSwitch } from "@/src/shared/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Logo,
-} from "@/src/shared/components/icons";
 import { siteConfig } from "@/src/config/site";
 import { authRoutes } from "@/src/features/auth/auth.routes";
+import {
+  DiscordIcon,
+  GithubIcon,
+  Logo,
+  TwitterIcon,
+} from "@/src/shared/components/icons";
+import { ThemeSwitch } from "@/src/shared/components/theme-switch";
 
 export const Navbar = () => {
-  // TODO: Authenticated olma durumuna gore navbar linklerini degistir
+  // TODO: Swap navbar links based on authentication status
 
   return (
     <HeroUINavbar
@@ -80,7 +76,7 @@ export const Navbar = () => {
               variant: "shadow",
             })}
           >
-            Giriş Yap
+            Log In
           </Button>
         </NavbarItem>
         <NavbarItem className="hidden md:flex">
@@ -92,7 +88,7 @@ export const Navbar = () => {
               variant: "ghost",
             })}
           >
-            Üye Ol
+            Sign Up
           </Button>
         </NavbarItem>
       </NavbarContent>

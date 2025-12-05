@@ -1,28 +1,28 @@
-import { Sparkles, Wand2, Camera, LucideIcon } from "lucide-react";
-import { Card, CardBody, CardHeader } from "@heroui/card";
+import { Card, CardHeader } from "@heroui/card";
+import { Camera, LucideIcon, Sparkles, Wand2 } from "lucide-react";
 
 export default function Steps() {
   const steps = [
     {
       icon: Wand2,
       number: "01",
-      title: "Özellikleri Seç",
+      title: "Choose the Details",
       description:
-        "Silüet, kumaş, yaka ve detayları birkaç tıklamayla seç. Tarzını sen belirle.",
+        "Pick the silhouette, fabric, neckline, and accents in just a few clicks. You set the tone.",
     },
     {
       icon: Sparkles,
       number: "02",
-      title: "AI Oluşturur",
+      title: "AI Designs It",
       description:
-        "Yapay zeka, senin için profesyonel detaylarla kişisel tasarımını oluşturur.",
+        "Our AI crafts your personalized design with professional-level detail just for you.",
     },
     {
       icon: Camera,
       number: "03",
-      title: "Üzerinde Deneyin",
+      title: "Try It On",
       description:
-        "Fotoğrafınızı yükleyin veya mankenle görün. Hayaliniz gerçek oluyor.",
+        "Upload your photo or view it on the mannequin and watch your vision come to life.",
     },
   ];
 
@@ -31,10 +31,10 @@ export default function Steps() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="text-center mb-16 space-y-4 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl  font-bold text-foreground">
-            Nasıl Çalışır?
+            How It Works
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Hayalinizdeki gelinliğe üç basit adımda kavuşun
+            Get to your dream wedding dress in three simple steps.
           </p>
         </div>
 

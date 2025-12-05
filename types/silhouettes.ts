@@ -1,328 +1,327 @@
 export const silhouettes = {
-  label: "Silüet",
-  placeholder: "Lütfen bir silüet seçiniz.",
+  label: "Silhouette",
+  placeholder: "Please choose a silhouette.",
   items: [
     {
       key: "A-Line",
       label: "A Kesim",
       description:
-        "Üstte dar, belden aşağı doğru A harfi gibi genişleyen klasik ve zarif form. Çoğu vücut tipine uygundur.",
+        "Fitted through the bodice before flaring from the waist in a classic A-shape that flatters most body types.",
     },
     {
       key: "Ball-Gown",
       label: "Prenses Modeli",
       description:
-        "Geniş etekli, belden kabaran, masalsı görünüm sunan siluet. Genellikle gösterişli düğünlerde tercih edilir.",
+        "Voluminous skirt that blossoms from the waist for a storybook look, perfect for grand celebrations.",
     },
     {
       key: "Mermaid",
       label: "Balık",
       description:
-        "Vücuda tamamen oturur, dizden itibaren genişler. Feminen ve cesur bir siluet.",
+        "Hugs every curve and flares out from the knee to create a feminine, daring silhouette.",
     },
     {
       key: "Trumpet",
       label: "Trompet",
       description:
-        "Diz altından değil, uyluk hizasından açılmaya başlar; mermaid’e benzer ama daha yumuşak geçişli.",
+        "Begins to flare around mid-thigh instead of the knee, offering a softer transition than a mermaid cut.",
     },
     {
       key: "Sheath-Column",
       label: "Düz",
       description:
-        "Bedene paralel inen, sade ve zarif bir kesim. Minimalist tarzı sevenler için.",
+        "Falls straight along the body for a simple, refined shape ideal for minimalist tastes.",
     },
     {
       key: "Empire-Waist",
       label: "Empire",
       description:
-        "Göğüs altından başlayan, aşağı doğru dökülen bir form. Romantik ve zarif bir duruş sağlar.",
+        "Starts just below the bust and drapes downward, delivering a romantic and graceful silhouette.",
     },
     {
       key: "Boho-Bohemian",
       label: "Bohem",
       description:
-        "Rahat, akışkan kumaşlar, salaş form; doğa temalı veya açık hava düğünlerinde popüler.",
+        "Relaxed, flowy fabrics with effortless structure—popular for bohemian or outdoor weddings.",
     },
     {
       key: "Short-Mini",
       label: "Kısa",
       description:
-        "Diz üstü ya da diz hizasında biten modern kesim. Genelde nikah veya sade törenlerde.",
+        "Modern hemline that ends above or at the knee, often chosen for civil ceremonies or intimate events.",
     },
     {
       key: "Tea-Length",
       label: "Midi",
       description:
-        "Diz altı – bilek üstü uzunlukta, vintage esintili bir siluet.",
+        "Hits between mid-calf and just above the ankle, giving off a charming vintage vibe.",
     },
     {
       key: "High-Low",
       label: "High-Low",
       description:
-        "Önü kısa, arkası uzun etekli dinamik form. Hem modern hem zarif görünüm.",
+        "Dynamic skirt that is shorter in front and longer in back for a modern yet elegant statement.",
     },
   ],
 };
 
 export const cuttingStyles = {
-  label: "Kesim Tarzı",
-  placeholder: "Lütfen bir kesim tarzı seçiniz.",
+  label: "Cutting Style",
+  placeholder: "Please choose a cutting style.",
   items: [
     {
       key: "Princess-Cut",
       label: "Prenses Kesim",
       description:
-        "Bel ve göğüs hattını izleyen, dikişsiz bir şekilde formu ortaya çıkaran klasik kesim.",
+        "Follows the bust and waist seams seamlessly to sculpt a classic, tailored silhouette.",
     },
     {
       key: "Bias-Cut",
       label: "Bias Kesim",
       description:
-        "Kumaş çapraz kesilir, vücuda doğal biçimde oturur ve akıcı durur. İpeksi, dökümlü görünüm sağlar.",
+        "Fabric is cut on the bias so it drapes fluidly and hugs the body with a silky, liquid effect.",
     },
     {
       key: "Corset-Cut",
       label: "Korse Kesim",
       description:
-        "Üst kısmı korsaj şeklinde sıkı, beli belirginleştiren kesim.",
+        "Structured bodice with corsetry that cinches the waist and adds shapely support.",
     },
     {
       key: "Draped-Cut",
       label: "Drape Kesim",
       description:
-        "Kumaş kıvrımlı şekilde yerleştirilir, yumuşak ve zarif görünüm verir.",
+        "Fabric is layered in graceful folds to create a soft, romantic draped effect.",
     },
     {
       key: "Layered-Cut",
       label: "Katlı Kesim",
       description:
-        "Üst üste gelen kumaş katmanlarından oluşur, genellikle tül veya organze ile.",
+        "Built with stacked layers of fabric—often tulle or organza—to add depth and volume.",
     },
     {
       key: "Asymmetrical-Cut",
       label: "Asimetrik Kesim",
       description:
-        "Bir taraf kısa, diğer uzun veya farklı açıyla kesilmiş modern tasarım.",
+        "Features contrasting lengths or angles for a modern, dramatic finish.",
     },
     {
       key: "Peplum-Cut",
       label: "Peplum Kesim",
       description:
-        "Bel hizasında dışa doğru küçük etek katı eklenir. Bel vurgusunu artırır.",
+        "Adds a short overskirt at the waist to highlight and define the midsection.",
     },
     {
       key: "Fit-and-Flare",
       label: "Fit & Flare",
       description:
-        "Üstte dar, kalçadan sonra genişleyen form (mermaid’e yakın ama daha yumuşak).",
+        "Fitted through the bodice and hips before gently flaring, offering a softer take on the mermaid shape.",
     },
     {
       key: "Drop-Waist-Cut",
       label: "Drop Waist",
       description:
-        "Bel çizgisi kalçaya doğru indirilmiş, uzun üst formu. 1920’ler tarzı siluet sağlar.",
+        "Lowers the waistline toward the hips to elongate the torso with a 1920s-inspired feel.",
     },
     {
       key: "Two-Piece-Style",
       label: "İki Parça",
       description:
-        "Üst ve etek ayrı parçalar halindedir. Modern, minimal bir tasarım anlayışı.",
+        "Top and skirt are separate pieces for a sleek, contemporary interpretation.",
     },
   ],
 };
 
 export const necklines = {
-  label: "Yaka",
-  placeholder: "Lütfen bir yaka tipi seçiniz.",
+  label: "Neckline",
+  placeholder: "Please choose a neckline.",
   items: [
     {
       key: "Strapless",
       label: "Straplez",
       description:
-        "Askısız, omuzları tamamen açıkta bırakan klasik ve zarif bir yaka tipi. Romantik bir görünüm sunar.",
+        "Classic strapless neckline that bares the shoulders completely for a romantic finish.",
     },
     {
       key: "Square",
       label: "Kare Yaka",
       description:
-        "Kare biçiminde kesilmiş, dengeli ve modern bir görünüm sağlayan yaka tipi.",
+        "Squared-off neckline that creates a balanced, modern frame.",
     },
     {
       key: "Boat-Neck",
       label: "Kayık Yaka",
       description:
-        "Omuzdan omuza uzanan yatay hatlı yaka. Klasik, sade ve zarif bir duruş sağlar.",
+        "Runs horizontally from shoulder to shoulder for a timeless, refined look.",
     },
     {
       key: "V-Neck",
       label: "V Yaka",
       description:
-        "V şeklinde aşağı inen, boynu uzun gösteren ve zarif bir görünüm sağlayan klasik yaka tipi.",
+        "V-shaped neckline that elongates the neck and adds effortless elegance.",
     },
     {
       key: "Halter",
       label: "Halter Yaka",
       description:
-        "Askıları ense arkasında birleşen, omuzları açıkta bırakan modern bir yaka stili.",
+        "Straps meet at the nape, showcasing the shoulders with a modern twist.",
     },
     {
       key: "Off-Shoulder",
       label: "Düşük Omuz",
-      description:
-        "Omuzların altından geçen, romantik ve feminen bir görünüm sunan düşük omuzlu yaka tipi.",
+      description: "Sits below the shoulders for a soft, feminine appearance.",
     },
     {
       key: "One-Shoulder",
       label: "Tek Omuz",
       description:
-        "Tek omuzdan geçen asimetrik kesim. Modern ve dikkat çekici bir tarz sunar.",
+        "Asymmetric single-strap neckline that feels contemporary and eye-catching.",
     },
     {
       key: "Crew-Neck",
       label: "Bisiklet Yaka",
       description:
-        "Yuvarlak, boyuna yakın oturan sade bir yaka tipi. Minimalist ve klasik bir görünüm sağlar.",
+        "Rounded neckline that sits close to the collarbone for minimalist polish.",
     },
     {
       key: "High-Neck",
       label: "Hakim Yaka",
       description:
-        "Boynu kapatan, zarif ve asil bir duruş sağlayan hakim yaka stili.",
+        "High mock neckline that covers the collarbone for regal sophistication.",
     },
     {
       key: "U-Neck",
       label: "U Yaka",
       description:
-        "U şeklinde, derinliği değişebilen klasik bir yaka tipi. Yumuşak ve dengeli bir görünüm sağlar.",
+        "U-shaped neckline with adjustable depth that delivers a gentle, balanced finish.",
     },
     {
       key: "Illusion",
       label: "İllüzyon Yaka",
       description:
-        "Şeffaf tül veya dantel üzerine uygulanan yaka tipi. Zarif, romantik ve gizemli bir görünüm sunar.",
+        "Sheer tulle or lace overlay that creates an ethereal, romantic neckline.",
     },
   ],
 };
 
 export const styles = {
-  label: "Tarz",
-  placeholder: "Lütfen bir tarz seçiniz.",
+  label: "Style",
+  placeholder: "Please choose a style.",
   items: [
     {
       key: "Bohemian",
       label: "Bohem",
       description:
-        "Rahat, doğal ve salaş görünümlü gelinlik tarzı. Danteller, uçuşan kumaşlar ve özgür ruhlu detaylar içerir.",
+        "Relaxed, free-spirited aesthetic with lace, flowing fabrics, and effortless details.",
     },
     {
       key: "Helen",
       label: "Helen",
       description:
-        "Antik Yunan tanrıçalarından ilham alan zarif ve dökümlü bir tarz. Akışkan kumaşlar ve pileli detaylar öne çıkar.",
+        "Inspired by ancient Greek goddesses with fluid draping, pleats, and graceful lines.",
     },
     {
       key: "Plus-Size",
       label: "Büyük Beden",
       description:
-        "Vücut hatlarını dengeleyen, destekleyici kumaş ve kesimlerle tasarlanmış gelinlik tarzı.",
+        "Designed with supportive fabrics and thoughtful cuts that balance and celebrate curves.",
     },
     {
       key: "Vintage",
       label: "Vintage",
       description:
-        "Geçmiş dönem modasından (özellikle 1920–1980 arası) ilham alan nostaljik detaylara sahip gelinlik stili.",
+        "Nostalgic bridal details inspired by fashion eras from the 1920s through the 1980s.",
     },
     {
       key: "Modest",
       label: "Tesettür",
       description:
-        "Kolları, boynu ve dekolte bölgesini kapatan zarif tasarım. Danteller, uzun kollar ve baş örtüsüyle tamamlanabilir.",
+        "Elegant coverage for arms, neckline, and décolletage, often paired with veils or long sleeves.",
     },
     {
       key: "Without-Petticoat",
       label: "Tarlatansız",
       description:
-        "İç eteği veya kabartı katmanı bulunmayan sade, doğal düşüşlü gelinlik tarzı.",
+        "Skirts without inner crinoline layers for a relaxed, naturally draped finish.",
     },
     {
       key: "Modern",
       label: "Modern",
       description:
-        "Minimal çizgilere, temiz dikişlere ve çağdaş detaylara sahip yenilikçi tasarımlar.",
+        "Innovative looks with clean lines, architectural seams, and contemporary details.",
     },
     {
       key: "Minimalist",
       label: "Minimalist",
       description:
-        "Sadelikten ilham alan, süsten uzak, net hatlara sahip zarif bir tarz. Genellikle düz kumaşlar kullanılır.",
+        "Understated silhouettes with crisp lines and little embellishment, often in solid fabrics.",
     },
     {
       key: "Simple",
       label: "Sade",
       description:
-        "Abartısız, sade kesimli ve genellikle aksesuarsız tasarımlar. Zarafeti sadelikte bulur.",
+        "Uncomplicated cuts with minimal accessories that let effortless elegance shine.",
     },
     {
       key: "Romantic",
       label: "Romantik",
       description:
-        "Yumuşak tüller, çiçek işlemeleri ve pastel tonlarla zarif, duygusal bir atmosfer yaratan tarz.",
+        "Soft tulle, floral appliqués, and pastel hues that create an emotional, dreamy feel.",
     },
     {
       key: "Two-Piece",
       label: "İki Parça",
       description:
-        "Üst ve etek ayrı olan modern bir gelinlik tarzı. Genellikle minimal veya genç bir görünüm sağlar.",
+        "Separates pairing a top and skirt for a fresh, youthful bridal look.",
     },
     {
       key: "Winter",
       label: "Kışlık",
       description:
-        "Daha kalın kumaşlar, uzun kollar ve sıcak tutan detaylarla soğuk hava düğünlerine uygun tasarımlar.",
+        "Warm fabrics, long sleeves, and cozy accents tailored for cold-weather celebrations.",
     },
     {
       key: "Bold",
       label: "Cesur",
       description:
-        "Derin yaka, açık sırt veya yüksek yırtmaç gibi dikkat çekici detaylarla iddialı bir stil.",
+        "Statement details like deep necklines, open backs, or dramatic slits for maximum impact.",
     },
     {
       key: "Classic",
       label: "Klasik",
       description:
-        "Zamansız zarafeti temsil eden geleneksel gelinlik tarzı. Dantel, saten ve uzun duvak gibi unsurlar içerir.",
+        "Timeless bridal hallmarks such as lace, satin, and sweeping veils.",
     },
     {
       key: "Glamorous",
       label: "Görkemli",
       description:
-        "Işıltılı taş işlemeleri, kabarık etekler ve dikkat çekici detaylarla lüks bir görünüm sunar.",
+        "Luxurious embellishments, voluminous skirts, and head-turning accents for a high-glam finish.",
     },
     {
       key: "Fairy-Tale",
       label: "Masalsı",
       description:
-        "Prenses temalı, büyüleyici ve hayal dünyasından çıkmış gibi görünen ihtişamlı gelinlik tarzı.",
+        "Princess-inspired gowns that feel magical and straight out of a fairy tale.",
     },
     {
       key: "Rustic",
       label: "Rustik",
       description:
-        "Doğal kumaşlar, sade danteller ve toprak tonlarıyla kır düğünlerine uygun doğal bir tarz.",
+        "Natural fabrics, simple lace, and earthy tones suited for countryside weddings.",
     },
     {
       key: "Country",
       label: "Kırsal",
       description:
-        "Rustik stile benzer, açık hava düğünleri için sade ama zarif detaylarla tasarlanmış rahat bir görünüm.",
+        "Relaxed yet refined details tailored for outdoor venues, similar to rustic styling.",
     },
   ],
 };
 
-export const lowCuts = {
-  label: "Dekolte",
-  placeholder: "Lütfen bir dekolte türü seçiniz.",
+export const lowCut = {
+  label: "Low Cut",
+  placeholder: "Please choose a cutout style.",
   items: [
     {
       key: "Backless",
@@ -368,8 +367,8 @@ export const lowCuts = {
 };
 
 export const skirtLengths = {
-  label: "Etek Boyu",
-  placeholder: "Lütfen bir etek boyu seçiniz.",
+  label: "Skirt",
+  placeholder: "Please choose a skirt length.",
   items: [
     {
       key: "Mini",
@@ -395,218 +394,214 @@ export const skirtLengths = {
 };
 
 export const sleeves = {
-  label: "Kol",
-  placeholder: "Lütfen bir kol türü seçiniz.",
+  label: "Sleeve",
+  placeholder: "Please choose a sleeve style.",
   items: [
     {
       key: "Cap Sleeve",
       label: "Omuz Üstü Kol",
       description:
-        "Omuzları hafifçe örten kısa kol tipi, zarif ve romantik bir görünüm sağlar.",
+        "Short sleeve that lightly covers the shoulder for a graceful, romantic touch.",
     },
     {
       key: "Short Sleeve",
       label: "Kısa Kol",
-      description: "Omuzdan başlayıp kısa boyda inen klasik kol tipi.",
+      description: "Classic sleeve that extends just below the shoulder.",
     },
     {
       key: "Long Sleeve",
       label: "Uzun Kol",
       description:
-        "Bileğe kadar uzanan kol tipi. Zarif ve geleneksel bir görünüm sağlar.",
+        "Sleeve that reaches the wrist to deliver a graceful, traditional look.",
     },
     {
       key: "Balloon Sleeve",
       label: "Balon Kol",
       description:
-        "Üst kısmı geniş, bileğe doğru daralan hacimli kol tipi. Romantik ve dikkat çekicidir.",
+        "Voluminous upper arm that tapers toward the wrist for a romantic statement.",
     },
     {
       key: "Sleeveless",
       label: "Kolsuz",
-      description: "Omuzları tamamen açıkta bırakan sade ve modern kol tipi.",
+      description: "Bare-shoulder silhouette that feels clean and modern.",
     },
     {
       key: "Spaghetti Strap",
       label: "Askılı",
       description:
-        "İnce askılardan oluşan, minimal ve hafif bir görünüm sağlayan kol tipi.",
+        "Delicate thin straps that create a minimal, lightweight look.",
     },
     {
       key: "Off Shoulder Sleeve",
       label: "Düşük Omuz Kol",
       description:
-        "Omuzların altından geçen, romantik ve feminen bir görünüm sağlayan kol tipi.",
+        "Sleeve drapes below the shoulders to create a soft, feminine effect.",
     },
     {
       key: "Illusion Sleeve",
       label: "Illüzyon Kol",
       description:
-        "Şeffaf tül veya dantel kullanılarak yapılan uzun veya kısa kol tipi. Zarif ve hafif bir görünüm sağlar.",
+        "Crafted with sheer tulle or lace for an elegant sleeve that feels light as air.",
     },
     {
       key: "Bell Sleeve",
       label: "Çan Kol",
       description:
-        "Dirsekten veya bilekten aşağı doğru genişleyen, dramatik ve vintage bir kol stili.",
+        "Flares out from the elbow or wrist to deliver dramatic, vintage-inspired movement.",
     },
     {
       key: "Puff Sleeve",
       label: "Puf Kol",
       description:
-        "Omuzdan başlayıp balon gibi kabaran, romantik ve genç bir stil.",
+        "Rounded sleeve that puffs at the shoulder for a youthful, romantic vibe.",
     },
   ],
 };
 
 export const embellishments = {
-  label: "İşlemeler",
-  placeholder: "Lütfen bir işleme seçiniz.",
+  label: "Embellishment",
+  placeholder: "Please choose an embellishment.",
   items: [
     {
       key: "Lace",
       label: "Dantel",
-      description:
-        "Gelinliğe zarif ve klasik bir hava katan, farklı motiflerdeki dantel süslemeler.",
+      description: "Elegant lace motifs that lend a timeless, classic touch.",
     },
     {
       key: "Beading",
       label: "Boncuk İşleme",
-      description:
-        "Küçük boncuklarla yapılan işlemeler, ışıltılı ve zarif bir görünüm sağlar.",
+      description: "Intricate beadwork that adds shimmer and refined detail.",
     },
     {
       key: "Sequins",
       label: "Payet İşleme",
-      description:
-        "Parlak payetlerle yapılan süsleme, gösterişli ve modern bir etki yaratır.",
+      description: "Sparkling sequins that bring a bold, modern glow.",
     },
     {
       key: "Embroidery",
       label: "Nakış",
       description:
-        "Kumaş üzerine işlenen desenler, romantik veya sanatsal detaylar ekler.",
+        "Stitched motifs that introduce romantic or artistic detailing.",
     },
     {
       key: "Applique",
       label: "Aplik",
       description:
-        "Dantel, kumaş veya işlemeli motiflerin üst üste dikilmesiyle yapılan dekoratif detay.",
+        "Layered lace or fabric motifs sewn on top to add dimensional decoration.",
     },
     {
       key: "Pearls",
       label: "İnci İşleme",
       description:
-        "Gelinliğe klasik ve zarif bir görünüm katan küçük inci detaylar.",
+        "Delicate pearls that elevate the gown with classic sophistication.",
     },
     {
       key: "Rhinestones",
       label: "Kristal Taş İşleme",
-      description:
-        "Parlak taşlarla yapılan süsleme, lüks ve dikkat çekici bir etki sağlar.",
+      description: "Brilliant stones that create a luxe, eye-catching effect.",
     },
     {
       key: "Fringe",
       label: "Püskül / Fırfır",
       description:
-        "Kumaş uçlarına veya dikişlere eklenen hareketli detaylar, dans ve hareket esnasında dikkat çeker.",
+        "Swishy trims added to hems or seams that move beautifully as you walk or dance.",
     },
     {
       key: "Ruffles",
       label: "Fırfır",
       description:
-        "Kumaşın üst üste katlanmasıyla elde edilen dekoratif ve romantik detay.",
+        "Soft gathered fabric that stacks in layers for a romantic flourish.",
     },
     {
       key: "Sashes",
-      label: "Kuşak / Kemer",
+      label: "Sashes",
       description:
-        "Bel hattını vurgulayan, kumaş veya şerit şeklinde aksesuar.",
+        "Waist-defining ribbons or belts that accentuate the silhouette.",
     },
     {
       key: "Buttons",
-      label: "Düğme Detay",
+      label: "Buttons",
       description:
-        "Dekoratif veya fonksiyonel düğmeler, gelinliğe klasik ve zarif bir dokunuş ekler.",
+        "Decorative or functional buttons that add a refined finishing touch.",
     },
     {
       key: "Corsage",
-      label: "Çiçek Detay",
+      label: "Flower Details",
       description:
-        "Gelinliğe romantik ve feminen hava katan kumaş veya yapay çiçek süslemeleri.",
+        "Fabric or faux floral accents that bring a feminine, romantic feel.",
     },
     {
       key: "Illusion-Overlay",
-      label: "Illüzyon Tül / Overlay",
+      label: "Illusion Veil / Overlay",
       description:
-        "Şeffaf tül üzerine yapılan dantel veya taş işlemeleri, zarif ve hafif bir görünüm sağlar.",
+        "Transparent veil or overlay with lace or beadwork that creates a delicate, airy appearance.",
     },
   ],
 };
 
 export const fabrics = {
-  label: "Kumaş Türü",
-  placeholder: "Lütfen bir kumaş türü seçiniz.",
+  label: "Fabric",
+  placeholder: "Please choose a fabric.",
   items: [
     {
       key: "Satin",
       label: "Saten",
       description:
-        "Parlak ve pürüzsüz yüzeye sahip, klasik ve gösterişli gelinlik kumaşı.",
+        "Smooth, lustrous surface that delivers a classic and glamorous finish.",
     },
     {
       key: "Tulle",
       label: "Tül",
       description:
-        "Hafif ve transparan, kabarık etekler ve illüzyon detaylar için ideal.",
+        "Lightweight, sheer netting ideal for voluminous skirts and illusion details.",
     },
     {
       key: "Organza",
       label: "Organze",
       description:
-        "İnce, sert ve parlak dokulu kumaş, hacimli ve zarif tasarımlar için kullanılır.",
+        "Thin yet crisp fabric with a subtle sheen, perfect for structured volume.",
     },
     {
       key: "Chiffon",
       label: "Şifon",
       description:
-        "Hafif, akıcı ve yumuşak kumaş, romantik ve doğal düşüşlü gelinlikler için uygundur.",
+        "Light, airy fabric that drapes softly for romantic, flowing silhouettes.",
     },
     {
       key: "Lace",
       label: "Dantel",
       description:
-        "Dekoratif ve desenli kumaş, romantik ve klasik tasarımlarda sık kullanılır.",
+        "Decorative patterned textile favored for romantic and traditional designs.",
     },
     {
       key: "Crepe",
       label: "Krep",
       description:
-        "Mat ve hafif dokulu kumaş, minimalist ve modern tasarımlar için idealdir.",
+        "Matte, lightly textured fabric ideal for minimalist, modern gowns.",
     },
     {
       key: "Mikado",
       label: "Mikado",
       description:
-        "Kalın ve parlak dokulu kumaş, gösterişli etek ve kabarık formlar için uygundur.",
+        "Thick, glossy weave that holds dramatic shapes and voluminous skirts.",
     },
     {
       key: "Velvet",
       label: "Kadife",
       description:
-        "Yumuşak, lüks ve sıcak tutan kumaş, özellikle kışlık gelinliklerde tercih edilir.",
+        "Plush, luxurious fabric that provides warmth—ideal for winter weddings.",
     },
     {
       key: "Taffeta",
       label: "Taffeta",
       description:
-        "Parlak ve sert dokulu kumaş, hacimli ve dramatik etekler için idealdir.",
+        "Shiny, crisp fabric perfect for structured, dramatic skirts.",
     },
     {
       key: "Georgette",
       label: "Georgette",
       description:
-        "İnce, hafif ve yarı transparan kumaş, akıcı ve romantik tasarımlar için uygundur.",
+        "Lightweight, semi-sheer fabric that flows gracefully with movement.",
     },
   ],
 };

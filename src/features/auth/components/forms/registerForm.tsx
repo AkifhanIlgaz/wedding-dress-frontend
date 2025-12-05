@@ -1,36 +1,27 @@
 "use client";
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { Eye, EyeOff, Lock, Mail, User } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  AuthApiError,
-  AuthInvalidCredentialsError,
   isAuthApiError,
   SignUpWithPasswordCredentials,
 } from "@supabase/supabase-js";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 import { Button } from "@heroui/button";
 
 import { Input } from "@heroui/input";
-import { Checkbox } from "@heroui/checkbox";
 
+import { createClient } from "@/src/lib/supabase/client";
+import { Link } from "@heroui/link";
 import { authRoutes } from "../../auth.routes";
 import { authText } from "../../auth.text";
-import {
-  LoginRequest,
-  loginSchema,
-  RegisterRequest,
-  registerSchema,
-} from "../../schemas";
-import { Link } from "@heroui/link";
-import { createClient } from "@/src/lib/supabase/client";
+import { RegisterRequest, registerSchema } from "../../schemas";
 import { AuthMessage } from "../shared/authMessage";
+import AuthDivider from "../shared/divider";
 import AuthHeader from "../shared/header";
 import SignInWithGoogle from "../shared/signInWithGoogle";
-import AuthDivider from "../shared/divider";
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -64,7 +55,7 @@ export default function RegisterForm() {
       if (res.error) throw res.error;
 
       if (res.data.user?.identities?.length === 0) {
-        setError("Bu e-posta adresiyle zaten bir hesap var.");
+        setError("An account with this email already exists.");
         return;
       }
 
@@ -73,13 +64,13 @@ export default function RegisterForm() {
       if (isAuthApiError(error)) {
         switch (error.code) {
           case "email_exists":
-            setError("Bu e-posta adresiyle zaten bir hesap var.");
+            setError("An account with this email already exists.");
             break;
           case "invalid_credentials":
-            setError("E-posta veya şifre hatalı. Lütfen tekrar deneyiniz.");
+            setError("Incorrect email or password. Please try again.");
             break;
           default:
-            setError("Bir hata meydana geldi. Lütfen tekrar deneyiniz.");
+            setError("Something went wrong. Please try again.");
             break;
         }
       }
@@ -92,12 +83,12 @@ export default function RegisterForm() {
     return (
       <AuthMessage
         variant="success"
-        title="E-posta doğrulaması gerekli"
+        title="Email verification required"
         setError={setError}
-        message="Lütfen hesabını aktifleştirmek için e-posta adresini kontrol et."
+        message="Please check your inbox to activate your account."
         extraNote={authText.checkSpam}
         backHref={authRoutes.login}
-        backText="Giriş Sayfasına Dön"
+        backText="Back to login"
       />
     );
   }
@@ -106,11 +97,11 @@ export default function RegisterForm() {
     return (
       <AuthMessage
         variant="error"
-        title="Bir şeyler ters gitti"
+        title="Something went wrong"
         message={error}
         setError={setError}
         backHref={authRoutes.login}
-        backText="Giriş Sayfasına Dön"
+        backText="Back to login"
       />
     );
   }

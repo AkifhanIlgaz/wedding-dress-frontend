@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const forgotPasswordSchema = z
   .object({
-    email: z.email("Lütfen geçerli bir e-posta giriniz.").max(255),
+    email: z.email("Please enter a valid email address.").max(255),
   })
   .strict();
 

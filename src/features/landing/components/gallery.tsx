@@ -28,11 +28,11 @@ export default function Gallery() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 space-y-4 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-            İlham Alabileceğiniz Tasarımlar
+            Designs to Inspire You
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Farklı tarzlardaki gelinlik tasarımlarından ilham alın ve kendi
-            stilinizi keşfedin.
+            Explore wedding dress designs across different styles and discover
+            your own signature look.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export default function Gallery() {
                     size="sm"
                     className="bg-white/90 text-foreground dark:text-background hover:bg-white hover:scale-105"
                   >
-                    Bu Stili Dene
+                    Try This Style
                   </Button>
                 </div>
               </div>

@@ -5,25 +5,25 @@ export default function Testimonials() {
   const testimonials = [
     {
       name: "Ayşe Yılmaz",
-      role: "Gelin",
+      role: "Bride",
       content:
-        "AI tam olarak hayalimdeki gelinliği oluşturdu. Üzerimde denediğimde kendimi çok özel hissettim. Herkese tavsiye ederim!",
+        "AI created exactly the gown I dreamed of. When I tried it on I felt incredibly special. I recommend it to everyone!",
       rating: 5,
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ayseyilmaz",
     },
     {
       name: "Elif Demir",
-      role: "Gelin",
+      role: "Bride",
       content:
-        "Tasarım süreci çok kolay ve eğlenceliydi. Birçok farklı stil denedim ve en sonunda tam istediğimi buldum. Harika bir platform!",
+        "The design process was so easy and fun. I experimented with many styles and finally found exactly what I wanted. Amazing platform!",
       rating: 5,
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Elifdemir",
     },
     {
       name: "Zeynep Kaya",
-      role: "Gelin",
+      role: "Bride",
       content:
-        "Gelinlik alışverişi hiç bu kadar kolay olmamıştı. Evimden çıkmadan hayallerimi gerçeğe dönüştürdüm. Çok mutluyum!",
+        "Wedding dress shopping has never been this easy. I brought my dreams to life without leaving home. I'm over the moon!",
       rating: 5,
       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Zeynepkaya",
     },
@@ -34,10 +34,10 @@ export default function Testimonials() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 space-y-4 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl  font-bold text-foreground">
-            Gerçek Kullanıcı Deneyimleri
+            Real Bride Experiences
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Binlerce mutlu gelinin hikayesine katılın
+            Join the stories of thousands of happy brides.
           </p>
         </div>
 

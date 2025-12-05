@@ -2,10 +2,10 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "Next.js + HeroUI",
-  description: "Make beautiful websites regardless of your design experience.",
+  description: "Design unforgettable wedding looks with AI-powered tools.",
   navItems: [
     {
-      label: "Anasayfa",
+      label: "Home",
       href: "/",
     },
     {
@@ -14,31 +14,31 @@ export const siteConfig = {
     },
 
     {
-      label: "İletişim",
+      label: "Contact",
       href: "/contact",
     },
   ],
   authenticatedNavItems: [
     {
-      label: "Gelinliğini Tasarla",
+      label: "Design Your Dress",
       href: "/design",
     },
     {
-      label: "Dene",
+      label: "Try On",
       href: "/try-on",
     },
     {
-      label: "Gelinliklerim",
+      label: "My Dresses",
       href: "/my-wedding-dresses",
     },
     {
-      label: "Profil",
+      label: "Profile",
       href: "/profile",
     },
   ],
   navMenuItems: [
     {
-      label: "Anasayfa",
+      label: "Home",
       href: "/",
     },
     {
@@ -47,33 +47,33 @@ export const siteConfig = {
     },
 
     {
-      label: "İletişim",
+      label: "Contact",
       href: "/contact",
     },
     {
-      label: "Giriş Yap",
+      label: "Log In",
       href: "/login",
     },
     {
-      label: "Üye Ol",
+      label: "Sign Up",
       href: "/register",
     },
   ],
   authenticatedNavMenuItems: [
     {
-      label: "Profil",
+      label: "Profile",
       href: "/profile",
     },
     {
-      label: "Gelinliğini Tasarla",
+      label: "Design Your Dress",
       href: "/design",
     },
     {
-      label: "Dene",
+      label: "Try On",
       href: "/try-on",
     },
     {
-      label: "Gelinliklerim",
+      label: "My Dresses",
       href: "/my-wedding-dresses",
     },
   ],

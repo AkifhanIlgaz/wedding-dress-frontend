@@ -1,30 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useRouter, useSearchParams } from "next/navigation";
-import { ArrowLeft, Check, Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { Button } from "@heroui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { isAuthApiError } from "@supabase/supabase-js";
-import { Button } from "@heroui/button";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 import { Input } from "@heroui/input";
-import { Checkbox } from "@heroui/checkbox";
 
+import { createClient } from "@/src/lib/supabase/client";
+import { Link } from "@heroui/link";
 import { authRoutes } from "../../auth.routes";
 import { authText } from "../../auth.text";
-import {
-  ForgotPasswordRequest,
-  forgotPasswordSchema,
-  LoginRequest,
-  loginSchema,
-  ResetPasswordRequest,
-  resetPasswordSchema,
-} from "../../schemas";
-import { Link } from "@heroui/link";
-import AuthHeader from "../shared/header";
-import { createClient } from "@/src/lib/supabase/client";
+import { ResetPasswordRequest, resetPasswordSchema } from "../../schemas";
 import { AuthMessage } from "../shared/authMessage";
+import AuthHeader from "../shared/header";
 
 export default function ResetPasswordForm() {
   const router = useRouter();
@@ -56,10 +48,12 @@ export default function ResetPasswordForm() {
       if (isAuthApiError(error)) {
         switch (error.code) {
           case "same_password":
-            setError("Yeni şifreniz eski şifreniz ile aynı olamaz.");
+            setError(
+              "Your new password can't be the same as your previous one.",
+            );
             break;
           default:
-            setError("Bir hata meydana geldi. Lütfen tekrar deneyiniz.");
+            setError("Something went wrong. Please try again.");
             break;
         }
       }
@@ -72,12 +66,12 @@ export default function ResetPasswordForm() {
     return (
       <AuthMessage
         variant="error"
-        title="Bağlantı geçersiz."
-        message={"Bu bağlantı geçersiz veya süresi dolmuş."}
-        extraNote="Lütfen yeni bir şifre sıfırlama bağlantısı alın."
+        title="The reset link is invalid."
+        message={"This link is invalid or has expired."}
+        extraNote="Please request a new password reset email."
         setError={setError}
         backHref={authRoutes.login}
-        backText="Giriş Sayfasına Dön"
+        backText="Back to login"
       />
     );
   }
@@ -86,11 +80,11 @@ export default function ResetPasswordForm() {
     return (
       <AuthMessage
         variant="error"
-        title="Bir şeyler ters gitti"
+        title="Something went wrong"
         message={error}
         setError={setError}
         backHref={authRoutes.login}
-        backText="Giriş Sayfasına Dön"
+        backText="Back to login"
       />
     );
   }

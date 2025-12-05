@@ -7,7 +7,7 @@ export const resetPasswordSchema = z
     confirmPassword: passwordSchema,
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Şifreleriniz eşleşmiyor.",
+    message: "Passwords do not match.",
     path: ["confirmPassword"],
   })
   .strict();

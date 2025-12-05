@@ -6,15 +6,21 @@ interface PasswordStrengthProps {
 
 export default function PasswordStrength({ password }: PasswordStrengthProps) {
   const requirements = [
-    { label: "En az 8 karakter", test: (pwd: string) => pwd.length >= 8 }, // PASSWORD_MIN_LENGTH_TEXT
-    { label: "Büyük harf içerir", test: (pwd: string) => /[A-Z]/.test(pwd) }, // PASSWORD_UPPERCASE_TEXT
-    { label: "Küçük harf içerir", test: (pwd: string) => /[a-z]/.test(pwd) }, // PASSWORD_LOWERCASE_TEXT
-    { label: "Sayı içerir", test: (pwd: string) => /\d/.test(pwd) }, // PASSWORD_NUMBER_TEXT
+    { label: "At least 8 characters", test: (pwd: string) => pwd.length >= 8 },
+    {
+      label: "Includes an uppercase letter",
+      test: (pwd: string) => /[A-Z]/.test(pwd),
+    },
+    {
+      label: "Includes a lowercase letter",
+      test: (pwd: string) => /[a-z]/.test(pwd),
+    },
+    { label: "Includes a number", test: (pwd: string) => /\d/.test(pwd) },
   ];
 
   const strength = requirements.filter((req) => req.test(password)).length;
   const strengthColors = ["bg-danger", "bg-danger", "bg-warning", "bg-success"];
-  const strengthText = ["Zayıf", "Kötü", "İyi", "Güçlü"]; // PASSWORD_STRENGTH_LABELS
+  const strengthText = ["Weak", "Fair", "Good", "Strong"];
 
   return (
     <div className="space-y-2">
@@ -30,8 +36,7 @@ export default function PasswordStrength({ password }: PasswordStrengthProps) {
           />
         </div>
         <span className="text-xs text-default-500">
-          {password ? strengthText[strength - 1] || "Çok Zayıf" : ""}{" "}
-          {/* PASSWORD_STRENGTH_DEFAULT */}
+          {password ? strengthText[strength - 1] || "Very weak" : ""}
         </span>
       </div>
 
