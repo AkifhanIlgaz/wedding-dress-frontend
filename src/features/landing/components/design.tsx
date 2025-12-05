@@ -44,56 +44,68 @@ type PresetOption = {
   title: string;
   description: string;
   values: FormValues;
+  image: string;
+  availability: string;
+  footnote: string;
 };
 
 const presetOptions: PresetOption[] = [
   {
-    title: "Modern Minimalist",
+    title: "Classic Elegance",
     description:
-      "Clean lines with architectural details and a sleek silhouette.",
+      "Satin A-line gown with a deep V-neck and lace bodice for graceful formality.",
     values: {
-      silhouette: "Sheath-Column",
-      cuttingStyle: "Asymmetrical-Cut",
-      style: "Modern",
-      neckline: "Boat-Neck",
-      sleeve: "Sleeveless",
-      lowCut: "No-Cutout",
-      skirtLength: "Long",
-      fabric: "Crepe",
-      embellishment: "Buttons",
+      silhouette: "A-Line",
+      cuttingStyle: "Natural-Waist",
+      style: "Classic",
+      neckline: "Deep V-Neck",
+      sleeve: "Long Sleeve",
+      lowCut: "V-Back",
+      skirtLength: "Floor-Length",
+      fabric: "Satin",
+      embellishment: "Lace",
     },
+    image: "/preset-1.png",
+    availability: "Polished satin & heirloom lace.",
+    footnote: "Romantic, formal silhouettes.",
   },
   {
-    title: "Romantic Ball Gown",
+    title: "Romantic Sparkle",
     description:
-      "Ethereal layers, lace details, and a sweeping princess skirt.",
+      "Flowy chiffon dress with beaded embroidery and airy bishop sleeves.",
+    values: {
+      silhouette: "A-Line",
+      cuttingStyle: "Empire-Waist",
+      style: "Romantic",
+      neckline: "V-Neck",
+      sleeve: "Bishop Sleeve",
+      lowCut: "Illusion Back",
+      skirtLength: "Floor-Length",
+      fabric: "Chiffon",
+      embellishment: "Beading",
+    },
+    image: "preset-2.png",
+    availability: "Soft chiffon layers with sparkling beadwork.",
+    footnote: "Effortless movement & shimmer.",
+  },
+  {
+    title: "Royal Ball Gown",
+    description:
+      "Voluminous tulle skirt paired with a crystal-embellished corset bodice.",
     values: {
       silhouette: "Ball-Gown",
       cuttingStyle: "Princess-Cut",
-      style: "Romantic",
+      style: "Glamorous",
       neckline: "Off-Shoulder",
-      sleeve: "Illusion Sleeve",
-      lowCut: "Illusion Back",
-      skirtLength: "Train",
-      fabric: "Tulle",
-      embellishment: "Lace",
-    },
-  },
-  {
-    title: "Boho Garden Party",
-    description:
-      "Flowy fabrics, floral accents, and relaxed elegance for outdoors.",
-    values: {
-      silhouette: "Boho-Bohemian",
-      cuttingStyle: "Draped-Cut",
-      style: "Bohemian",
-      neckline: "V-Neck",
       sleeve: "Cap Sleeve",
-      lowCut: "Backless",
-      skirtLength: "Tea-Length",
-      fabric: "Chiffon",
-      embellishment: "Applique",
+      lowCut: "Corset Back",
+      skirtLength: "Cathedral Train",
+      fabric: "Tulle",
+      embellishment: "Crystals",
     },
+    image: "/hero-dress.jpg",
+    availability: "Statement corset with crystal florals.",
+    footnote: "Perfect for grand entrances.",
   },
 ];
 
@@ -206,35 +218,66 @@ export default function Design() {
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3 mb-10">
+        <div className="grid gap-6 md:grid-cols-3 mb-12">
           {presetOptions.map((preset) => {
             const isActive = activePreset === preset.title;
             return (
-              <button
+              <div
                 key={preset.title}
-                type="button"
-                onClick={() => handlePresetSelect(preset)}
+                role="button"
                 aria-pressed={isActive}
-                className={`text-left rounded-2xl border p-6 transition-all hover:-translate-y-1 hover:shadow-elegant ${
+                onClick={() => handlePresetSelect(preset)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    handlePresetSelect(preset);
+                  }
+                }}
+                tabIndex={0}
+                className={`relative group overflow-hidden rounded-2xl shadow-soft hover:shadow-elegant transition-all duration-500 aspect-[3/4] cursor-pointer border ${
                   isActive
-                    ? "border-primary bg-primary/5 shadow-elegant"
-                    : "border-border/50 bg-card"
+                    ? "border-primary shadow-elegant scale-[1.01]"
+                    : "border-border/60 hover:-translate-y-1"
                 }`}
               >
-                <h3 className="text-xl font-semibold text-foreground">
-                  {preset.title}
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  {preset.description}
-                </p>
-                <span className="mt-4 inline-flex text-sm font-medium text-primary">
-                  Apply preset →
-                </span>
-              </button>
+                <img
+                  src={preset.image}
+                  alt={`${preset.title} inspiration`}
+                  className="z-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent transition-opacity duration-300 ${
+                    isActive
+                      ? "opacity-100"
+                      : "group-hover:opacity-100 opacity-0"
+                  }`}
+                />
+                <div className="absolute inset-0 flex flex-col justify-between p-5 text-white">
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-semibold">{preset.title}</h3>
+                    <p className="text-sm text-white/80 max-w-sm">
+                      {preset.description}
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <div>
+                      <p className="text-xs">{preset.availability}</p>
+                      <p className="text-xs text-white/80">{preset.footnote}</p>
+                    </div>
+                    <Button
+                      color="primary"
+                      radius="full"
+                      size="sm"
+                      variant={isActive ? "shadow" : "bordered"}
+                    >
+                      {isActive ? "Preset Applied" : "Use This Style"}
+                    </Button>
+                  </div>
+                </div>
+              </div>
             );
           })}
         </div>
-
         <div className=" rounded-3xl p-8 lg:p-12 border border-border/50 shadow-elegant">
           <form
             onSubmit={handleSubmit(onSubmit)}
