@@ -1,5 +1,6 @@
 import Design from "@/src/features/landing/components/design";
 import Hero from "@/src/features/landing/components/hero";
+import Pricing from "@/src/features/landing/components/pricing";
 import Steps from "@/src/features/landing/components/steps";
 import Testimonials from "@/src/features/landing/components/testimonials";
 
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <Steps />
       <Design />
+      <Pricing />
       <Testimonials />
     </section>
   );

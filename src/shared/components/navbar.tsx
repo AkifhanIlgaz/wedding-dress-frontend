@@ -24,8 +24,6 @@ import {
 import { ThemeSwitch } from "@/src/shared/components/theme-switch";
 
 export const Navbar = () => {
-  // TODO: Swap navbar links based on authentication status
-
   return (
     <HeroUINavbar
       maxWidth="xl"
@@ -41,6 +39,9 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">ACME</p>
           </NextLink>
         </NavbarBrand>
+      </NavbarContent>
+
+      <NavbarContent className="basis-1/5 sm:basis-full" justify="center">
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
@@ -73,7 +74,7 @@ export const Navbar = () => {
             href={authRoutes.login}
             className={button({
               color: "primary",
-              variant: "shadow",
+              variant: "ghost",
             })}
           >
             Log In
@@ -81,14 +82,12 @@ export const Navbar = () => {
         </NavbarItem>
         <NavbarItem className="hidden md:flex">
           <Button
-            as={Link}
-            href={authRoutes.register}
             className={button({
               color: "primary",
-              variant: "ghost",
+              variant: "shadow",
             })}
           >
-            Sign Up
+            Design Now
           </Button>
         </NavbarItem>
       </NavbarContent>

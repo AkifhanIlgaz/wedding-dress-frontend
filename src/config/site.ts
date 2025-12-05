@@ -6,13 +6,17 @@ export const siteConfig = {
   navItems: [
     {
       label: "Home",
-      href: "/",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
+      href: "#hero",
     },
 
+    {
+      label: "Pricing",
+      href: "#pricing",
+    },
+    {
+      label: "Testimonials",
+      href: "#testimonials",
+    },
     {
       label: "Contact",
       href: "/contact",
@@ -39,24 +43,36 @@ export const siteConfig = {
   navMenuItems: [
     {
       label: "Home",
-      href: "/",
+      href: "#hero",
     },
     {
-      label: "Blog",
-      href: "/blog",
+      label: "Design Studio",
+      href: "#demo",
     },
 
+    {
+      label: "Gallery",
+      href: "#gallery",
+    },
+    {
+      label: "Pricing",
+      href: "#pricing",
+    },
+    {
+      label: "Testimonials",
+      href: "#testimonials",
+    },
     {
       label: "Contact",
       href: "/contact",
     },
     {
       label: "Log In",
-      href: "/login",
+      href: "/auth/login",
     },
     {
       label: "Sign Up",
-      href: "/register",
+      href: "/auth/register",
     },
   ],
   authenticatedNavMenuItems: [
