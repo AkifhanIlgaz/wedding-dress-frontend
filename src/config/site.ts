@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + HeroUI",
+  name: "Bridal Studio",
   description: "Design unforgettable wedding looks with AI-powered tools.",
   navItems: [
     {
