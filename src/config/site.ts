@@ -6,16 +6,16 @@ export const siteConfig = {
   navItems: [
     {
       label: "Home",
-      href: "#hero",
+      href: "/",
     },
 
     {
       label: "Pricing",
-      href: "#pricing",
+      href: "/#pricing",
     },
     {
       label: "Testimonials",
-      href: "#testimonials",
+      href: "/#testimonials",
     },
     {
       label: "Contact",
@@ -43,24 +43,20 @@ export const siteConfig = {
   navMenuItems: [
     {
       label: "Home",
-      href: "#hero",
+      href: "/",
     },
     {
       label: "Design Studio",
-      href: "#demo",
+      href: "/#demo",
     },
 
     {
-      label: "Gallery",
-      href: "#gallery",
-    },
-    {
       label: "Pricing",
-      href: "#pricing",
+      href: "/#pricing",
     },
     {
       label: "Testimonials",
-      href: "#testimonials",
+      href: "/#testimonials",
     },
     {
       label: "Contact",

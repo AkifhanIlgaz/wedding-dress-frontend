@@ -18,7 +18,6 @@ import { authRoutes } from "@/src/features/auth/auth.routes";
 import {
   DiscordIcon,
   GithubIcon,
-  Logo,
   TwitterIcon,
 } from "@/src/shared/components/icons";
 import { ThemeSwitch } from "@/src/shared/components/theme-switch";
@@ -33,10 +32,16 @@ export const Navbar = () => {
       shouldHideOnScroll
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+        <NavbarBrand className="gap-4">
+          <NextLink className="flex justify-start items-center gap-3" href="/">
+            <div className="w-20 h-20 shrink-0">
+              <img
+                src="/logo-removebg-preview.png"
+                alt="Bridal AI Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <p className="font-bold text-xl text-inherit">Bridal</p>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>

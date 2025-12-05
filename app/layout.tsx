@@ -1,14 +1,13 @@
 import "@/styles/globals.css";
-import { Metadata, Viewport } from "next";
-import { Link } from "@heroui/link";
 import clsx from "clsx";
+import { Metadata, Viewport } from "next";
 
 import { Providers } from "./providers";
 
-import { siteConfig } from "@/src/config/site";
 import { fontOutfit } from "@/src/config/fonts";
-import { Navbar } from "@/src/shared/components/navbar";
+import { siteConfig } from "@/src/config/site";
 import Footer from "@/src/shared/components/footer";
+import { Navbar } from "@/src/shared/components/navbar";
 
 export const metadata: Metadata = {
   title: {
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: "/favicon.ico",
+    icon: "/logo.jpg",
   },
 };
 
