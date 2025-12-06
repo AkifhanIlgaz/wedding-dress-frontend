@@ -29,7 +29,7 @@ import { z } from "zod";
 import { useAuth } from "@/src/context/auth-context";
 import { authRoutes } from "@/src/features/auth/auth.routes";
 
-type FormValues = {
+export type DesignerFormValues = {
   silhouette: string;
   cuttingStyle: string;
   style: string;
@@ -56,10 +56,17 @@ type SelectInfo = {
 type PresetOption = {
   title: string;
   description: string;
-  values: FormValues;
+  values: DesignerFormValues;
   image: string;
   availability: string;
   footnote: string;
+};
+
+type DesignProps = {
+  onAfterGenerate?: (
+    values: DesignerFormValues,
+    meta: { presetTitle: string | null },
+  ) => void;
 };
 
 const presetOptions: PresetOption[] = [
@@ -122,7 +129,7 @@ const presetOptions: PresetOption[] = [
   },
 ];
 
-const optionsMap: Record<keyof FormValues, SelectInfo> = {
+const optionsMap: Record<keyof DesignerFormValues, SelectInfo> = {
   silhouette: silhouettes,
   cuttingStyle: cuttingStyles,
   style: styles,
@@ -134,7 +141,7 @@ const optionsMap: Record<keyof FormValues, SelectInfo> = {
   embellishment: embellishments,
 };
 
-const randomizeFields: (keyof FormValues)[] = [
+const randomizeFields: (keyof DesignerFormValues)[] = [
   "silhouette",
   "cuttingStyle",
   "style",
@@ -158,7 +165,7 @@ const designerSchema = z.object({
   embellishment: z.string().min(1, "Please select embellishments."),
 });
 
-export default function Design() {
+export default function Design({ onAfterGenerate }: DesignProps = {}) {
   const { user } = useAuth();
   const [activePreset, setActivePreset] = useState<string | null>(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -167,7 +174,7 @@ export default function Design() {
     setValue,
     control,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<DesignerFormValues>({
     resolver: zodResolver(designerSchema),
     defaultValues: {
       silhouette: "",
@@ -182,7 +189,9 @@ export default function Design() {
     },
   });
 
-  function generateCustomWeddingDressPrompt(values: FormValues): string {
+  function generateCustomWeddingDressPrompt(
+    values: DesignerFormValues,
+  ): string {
     return `
   A hyper-realistic, studio-quality full-body image of a wedding dress displayed on an elegant, headless mannequin, shown from the front.
   The dress has a ${values.silhouette} silhouette with a ${values.neckline} neckline and ${values.sleeve} sleeves, featuring a ${values.lowCut} low cut.
@@ -196,7 +205,7 @@ export default function Design() {
   `.trim();
   }
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async (data: DesignerFormValues) => {
     if (!user) {
       setIsAuthModalOpen(true);
       return;
@@ -212,11 +221,14 @@ export default function Design() {
     });
 
     await res.json();
+    onAfterGenerate?.(data, { presetTitle: activePreset });
   };
 
   const handlePresetSelect = (preset: PresetOption) => {
-    Object.entries(preset.values).forEach(([field, value]) => {
-      setValue(field as keyof FormValues, value, {
+    (
+      Object.entries(preset.values) as [keyof DesignerFormValues, string][]
+    ).forEach(([field, value]) => {
+      setValue(field, value, {
         shouldValidate: true,
         shouldDirty: true,
       });
@@ -237,7 +249,7 @@ export default function Design() {
     setActivePreset(null);
   };
 
-  const renderSelect = (name: keyof FormValues, info: SelectInfo) => {
+  const renderSelect = (name: keyof DesignerFormValues, info: SelectInfo) => {
     const errorMessage = errors[name]?.message as string | undefined;
     return (
       <div className="flex flex-col gap-1">

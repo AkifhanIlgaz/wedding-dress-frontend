@@ -24,20 +24,16 @@ export const siteConfig = {
   ],
   authenticatedNavItems: [
     {
-      label: "Design Your Dress",
-      href: "/design",
-    },
-    {
-      label: "Try On",
-      href: "/try-on",
+      label: "Studio",
+      href: "/studio",
     },
     {
       label: "My Dresses",
-      href: "/my-wedding-dresses",
+      href: "/studio/my-dresses",
     },
     {
       label: "Profile",
-      href: "/profile",
+      href: "/studio/profile",
     },
   ],
   navMenuItems: [
@@ -73,20 +69,20 @@ export const siteConfig = {
   ],
   authenticatedNavMenuItems: [
     {
-      label: "Profile",
-      href: "/profile",
-    },
-    {
-      label: "Design Your Dress",
-      href: "/design",
-    },
-    {
-      label: "Try On",
-      href: "/try-on",
+      label: "Studio",
+      href: "/studio",
     },
     {
       label: "My Dresses",
-      href: "/my-wedding-dresses",
+      href: "/studio/my-dresses",
+    },
+    {
+      label: "Profile",
+      href: "/studio/profile",
+    },
+    {
+      label: "Ana Sayfa",
+      href: "/",
     },
   ],
 

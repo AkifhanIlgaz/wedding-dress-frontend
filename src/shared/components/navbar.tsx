@@ -33,8 +33,12 @@ export const Navbar = () => {
   const router = useRouter();
   const supabase = useMemo(() => createClient(), []);
 
+  const desktopLinks = user
+    ? siteConfig.authenticatedNavItems
+    : siteConfig.navItems;
+
   const mobileLinks = user
-    ? [...siteConfig.navItems, ...siteConfig.authenticatedNavItems]
+    ? siteConfig.authenticatedNavMenuItems
     : siteConfig.navMenuItems;
 
   const handleLogout = async () => {
@@ -67,7 +71,7 @@ export const Navbar = () => {
 
       <NavbarContent className="basis-1/5 sm:basis-full" justify="center">
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
+          {desktopLinks.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
                 className={clsx(
@@ -97,13 +101,13 @@ export const Navbar = () => {
             <NavbarItem className="hidden md:flex">
               <Button
                 as={Link}
-                href="/design"
+                href="/studio"
                 className={button({
                   color: "primary",
                   variant: "shadow",
                 })}
               >
-                Open Studio
+                Studio
               </Button>
             </NavbarItem>
             <NavbarItem className="hidden md:flex">
@@ -162,6 +166,18 @@ export const Navbar = () => {
               </Link>
             </NavbarMenuItem>
           ))}
+          {user && (
+            <NavbarMenuItem>
+              <Button
+                onPress={handleLogout}
+                className="w-full"
+                color="primary"
+                variant="bordered"
+              >
+                Çıkış Yap
+              </Button>
+            </NavbarMenuItem>
+          )}
           <NavbarMenuItem className=" sm:flex gap-4 w-full ">
             <Link
               isExternal

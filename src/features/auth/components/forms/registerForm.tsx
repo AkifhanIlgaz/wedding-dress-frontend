@@ -6,6 +6,7 @@ import {
   SignUpWithPasswordCredentials,
 } from "@supabase/supabase-js";
 import { Eye, EyeOff } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -24,11 +25,11 @@ import AuthHeader from "../shared/header";
 import SignInWithGoogle from "../shared/signInWithGoogle";
 
 export default function RegisterForm() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isSucceeded, setIsSucceeded] = useState(false);
 
   const form = useForm<RegisterRequest>({
     resolver: zodResolver(registerSchema),
@@ -59,7 +60,8 @@ export default function RegisterForm() {
         return;
       }
 
-      setIsSucceeded(true);
+      router.push("/studio");
+      router.refresh();
     } catch (error: unknown) {
       if (isAuthApiError(error)) {
         switch (error.code) {
@@ -78,20 +80,6 @@ export default function RegisterForm() {
       setIsLoading(false);
     }
   };
-
-  if (isSucceeded) {
-    return (
-      <AuthMessage
-        variant="success"
-        title="Email verification required"
-        setError={setError}
-        message="Please check your inbox to activate your account."
-        extraNote={authText.checkSpam}
-        backHref={authRoutes.login}
-        backText="Back to login"
-      />
-    );
-  }
 
   if (error) {
     return (
