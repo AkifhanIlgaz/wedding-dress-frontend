@@ -12,11 +12,22 @@ import {
   styles,
 } from "@/types/silhouettes";
 import { Button } from "@heroui/button";
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+} from "@heroui/modal";
 import { Select, SelectItem } from "@heroui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
+
+import { useAuth } from "@/src/context/auth-context";
+import { authRoutes } from "@/src/features/auth/auth.routes";
 
 type FormValues = {
   silhouette: string;
@@ -148,7 +159,9 @@ const designerSchema = z.object({
 });
 
 export default function Design() {
+  const { user } = useAuth();
   const [activePreset, setActivePreset] = useState<string | null>(null);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const {
     handleSubmit,
     setValue,
@@ -184,6 +197,11 @@ export default function Design() {
   }
 
   const onSubmit = async (data: FormValues) => {
+    if (!user) {
+      setIsAuthModalOpen(true);
+      return;
+    }
+
     console.log("Selected wedding dress features:", data);
 
     const res = await fetch(`http://localhost:8080/generate`, {
@@ -398,6 +416,40 @@ export default function Design() {
           </div>
         </form>
       </div>
+      <Modal isOpen={isAuthModalOpen} onOpenChange={setIsAuthModalOpen}>
+        <ModalContent>
+          <ModalHeader className="flex flex-col gap-1">
+            Sign in to generate gowns
+          </ModalHeader>
+          <ModalBody>
+            <p className="text-sm text-muted-foreground">
+              Create a free account or log in to preview AI couture designs and
+              unlock virtual try-on credits.
+            </p>
+          </ModalBody>
+          <ModalFooter className="flex gap-3">
+            <Button
+              as={Link}
+              href={authRoutes.login}
+              variant="ghost"
+              color="primary"
+              className="flex-1"
+              onPress={() => setIsAuthModalOpen(false)}
+            >
+              Log In
+            </Button>
+            <Button
+              as={Link}
+              href={authRoutes.register}
+              color="primary"
+              className="flex-1"
+              onPress={() => setIsAuthModalOpen(false)}
+            >
+              Create Account
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </section>
   );
 }

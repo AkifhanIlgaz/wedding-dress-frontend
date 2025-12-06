@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import {
@@ -12,9 +14,13 @@ import {
 import { button, link as linkStyles } from "@heroui/theme";
 import clsx from "clsx";
 import NextLink from "next/link";
+import { useRouter } from "next/navigation";
+import { useMemo } from "react";
 
 import { siteConfig } from "@/src/config/site";
+import { useAuth } from "@/src/context/auth-context";
 import { authRoutes } from "@/src/features/auth/auth.routes";
+import { createClient } from "@/src/lib/supabase/client";
 import {
   DiscordIcon,
   GithubIcon,
@@ -23,6 +29,19 @@ import {
 import { ThemeSwitch } from "@/src/shared/components/theme-switch";
 
 export const Navbar = () => {
+  const { user } = useAuth();
+  const router = useRouter();
+  const supabase = useMemo(() => createClient(), []);
+
+  const mobileLinks = user
+    ? [...siteConfig.navItems, ...siteConfig.authenticatedNavItems]
+    : siteConfig.navMenuItems;
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.refresh();
+  };
+
   return (
     <HeroUINavbar
       maxWidth="xl"
@@ -73,28 +92,60 @@ export const Navbar = () => {
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <Button
-            as={Link}
-            href={authRoutes.login}
-            className={button({
-              color: "primary",
-              variant: "ghost",
-            })}
-          >
-            Log In
-          </Button>
-        </NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <Button
-            className={button({
-              color: "primary",
-              variant: "shadow",
-            })}
-          >
-            Design Now
-          </Button>
-        </NavbarItem>
+        {user ? (
+          <>
+            <NavbarItem className="hidden md:flex">
+              <Button
+                as={Link}
+                href="/design"
+                className={button({
+                  color: "primary",
+                  variant: "shadow",
+                })}
+              >
+                Open Studio
+              </Button>
+            </NavbarItem>
+            <NavbarItem className="hidden md:flex">
+              <Button
+                onPress={handleLogout}
+                className={button({
+                  color: "primary",
+                  variant: "ghost",
+                })}
+              >
+                Log Out
+              </Button>
+            </NavbarItem>
+          </>
+        ) : (
+          <>
+            <NavbarItem className="hidden md:flex">
+              <Button
+                as={Link}
+                href={authRoutes.login}
+                className={button({
+                  color: "primary",
+                  variant: "ghost",
+                })}
+              >
+                Log In
+              </Button>
+            </NavbarItem>
+            <NavbarItem className="hidden md:flex">
+              <Button
+                as={Link}
+                href={authRoutes.register}
+                className={button({
+                  color: "primary",
+                  variant: "shadow",
+                })}
+              >
+                Design Now
+              </Button>
+            </NavbarItem>
+          </>
+        )}
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
@@ -104,17 +155,9 @@ export const Navbar = () => {
 
       <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.authenticatedNavMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === siteConfig.authenticatedNavMenuItems.length - 1
-                    ? "danger"
-                    : "foreground"
-                }
-                href={item.href}
-                size="lg"
-              >
+          {mobileLinks.map((item, index) => (
+            <NavbarMenuItem key={`${item.href}-${index}`}>
+              <Link color="foreground" href={item.href} size="lg">
                 {item.label}
               </Link>
             </NavbarMenuItem>
